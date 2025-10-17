@@ -1,0 +1,74 @@
+version: "2"
+
+run:
+  issues-exit-code: 1
+  tests: true
+
+output:
+  formats:
+    text:
+      path: stdout
+      colors: true
+
+linters:
+  default: all
+  disable:
+    - wsl # Deprecated; using wsl_v5 instead
+    - exhaustruct
+    - ireturn
+    - tagliatelle
+    - noinlineerr
+    - godot
+    - nolintlint
+    - gomoddirectives
+  settings:
+    wsl_v5:
+      allow-first-in-block: true
+      allow-whole-block: false
+      branch-max-lines: 2
+    gocritic:
+      disabled-checks:
+        - unlambda
+    misspell:
+      locale: US
+      ignore-rules:
+        - noteable
+    revive:
+      rules:
+        - name: exported
+          disabled: true
+    varnamelen:
+      ignore-names:
+        - err
+        - tt
+        - i
+        - m
+        - t
+    depguard:
+      rules:
+        Main:
+          allow:
+            - $gostd
+            - github.com/atotto/clipboard
+            - github.com/charmbracelet/bubbles/textinput
+            - github.com/charmbracelet/lipgloss
+            - github.com/lnquy/cron
+            - github.com/robfig/cron/v3
+            - github.com/charmbracelet/bubbletea
+            - github.com/cockroachdb/errors
+            - github.com/mattn/go-isatty
+
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+  settings:
+    gci:
+      sections:
+        - standard
+        - default
+        - prefix(github.com)
+      custom-order: true
+  exclusions:
+    generated: lax
