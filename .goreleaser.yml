@@ -1,0 +1,116 @@
+# GoReleaser configuration for Crontab Guru
+# A terminal-based cron expression editor with real-time validation
+# Keywords: cron, crontab, terminal, TUI, CLI, scheduler, bubbletea, Go
+# Documentation: https://goreleaser.com
+
+project_name: crontab-guru
+
+version: 2
+
+# Metadata for the project
+metadata:
+  mod_timestamp: "{{ .CommitTimestamp }}"
+
+before:
+  hooks:
+    - go mod tidy
+    - go mod verify
+
+builds:
+  - id: crontab-guru
+    binary: crontab-guru
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+      - arm
+    goarm:
+      - "7"
+    ignore:
+      - goos: windows
+        goarch: arm
+      - goos: windows
+        goarch: arm64
+    ldflags:
+      - -s -w
+      - -X main.version={{.Version}}
+      - -X main.commit={{.Commit}}
+      - -X main.date={{.Date}}
+
+archives:
+  - id: default
+    format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- .Version }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - README.md
+      - LICENSE
+
+checksum:
+  name_template: "checksums.txt"
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
+      - "^ci:"
+  groups:
+    - title: Features
+      regexp: '^.*?feat(\([[:word:]]+\))??!?:.+$'
+      order: 0
+    - title: "Bug fixes"
+      regexp: '^.*?fix(\([[:word:]]+\))??!?:.+$'
+      order: 1
+    - title: "Performance improvements"
+      regexp: '^.*?perf(\([[:word:]]+\))??!?:.+$'
+      order: 2
+    - title: Others
+      order: 999
+
+brews:
+  - repository:
+      owner: techquestsdev
+      name: homebrew-tap
+    name: crontab-guru
+    homepage: https://github.com/techquestsdev/crontab-guru
+    description: "🕐 Interactive terminal-based cron expression editor built with Go and Bubble Tea"
+    license: MIT
+    skip_upload: auto
+    # Keywords for Homebrew discoverability
+    caveats: |
+      Crontab Guru is an interactive terminal application for creating and editing cron expressions.
+      Keywords: cron, crontab, scheduler, terminal, TUI, CLI, bubbletea, interactive, developer-tools
+
+release:
+  github:
+    owner: techquestsdev
+    name: crontab-guru
+  draft: false
+  prerelease: auto
+  mode: replace
+  header: |
+    ## Crontab Guru {{ .Tag }} ({{ .Date }})
+
+    A terminal-based cron expression editor with real-time validation and human-readable descriptions.
+  footer: |
+    **Full Changelog**: https://github.com/techquestsdev/crontab-guru/compare/{{ .PreviousTag }}...{{ .Tag }}

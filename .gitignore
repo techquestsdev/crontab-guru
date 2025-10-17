@@ -1,0 +1,21 @@
+# Ref: https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+# Ignore everything
+*
+
+# But not these files...
+!/.github/**
+!/.gitignore
+
+!*.go
+!go.sum
+!go.mod
+
+!README.md
+!LICENSE
+
+!Makefile
+!.golangci.yml
+!.goreleaser.yml
+
+# ...even if they are in subdirectories
+!*/
