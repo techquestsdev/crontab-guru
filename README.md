@@ -31,7 +31,7 @@
 go install github.com/techquestsdev/crontab-guru@latest
 ```
 
-Then run with: `x` (or `crontab-guru` if renamed)
+Then run with: `crontab-guru`
 
 #### Using Homebrew (macOS/Linux)
 
