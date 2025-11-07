@@ -208,17 +208,18 @@ func validateWeekdayAbbreviation(letterPart string) bool {
 // extractLetterPart extracts the leading letter sequence from a value
 func extractLetterPart(value string) string {
 	upper := strings.ToUpper(value)
-	letterPart := ""
+
+	var letterPart strings.Builder
 
 	for _, char := range upper {
 		if char >= 'A' && char <= 'Z' {
-			letterPart += string(char)
+			letterPart.WriteRune(char)
 		} else {
 			break
 		}
 	}
 
-	return letterPart
+	return letterPart.String()
 }
 
 // hasLetters checks if a string contains any letter characters

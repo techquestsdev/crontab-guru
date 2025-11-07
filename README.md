@@ -33,10 +33,9 @@ go install github.com/techquestsdev/crontab-guru@latest
 
 Then run with: `crontab-guru`
 
-#### Using Homebrew (macOS/Linux)
+#### Using Homebrew (MacOS/Linux)
 
 ```bash
-# Coming soon - will be available after first release
 brew tap techquestsdev/tap
 brew install crontab-guru
 ```
