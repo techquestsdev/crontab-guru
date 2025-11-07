@@ -397,18 +397,7 @@ func TestRun(t *testing.T) {
 	}
 }
 
-// TestRunWithOptions verifies that the application can run with custom options
-// for headless testing environments. In CI environments without TTY,
-// the function should exit gracefully.
-func TestRunWithOptions(t *testing.T) {
-	t.Parallel()
-
-	// This test will exit early in CI environments without TTY
-	err := runWithOptions(tea.WithoutRenderer())
-	if err != nil {
-		t.Errorf("runWithOptions() returned an error: %v", err)
-	}
-} // TestViewWithNegativeFocusIndex verifies that the View() method handles
+// TestViewWithNegativeFocusIndex verifies that the View() method handles
 // edge cases with invalid focus indices without panicking.
 func TestViewWithNegativeFocusIndex(t *testing.T) {
 	t.Parallel()
@@ -1870,24 +1859,6 @@ func TestInitialModelWithCronDescriptorError(t *testing.T) {
 	}
 }
 
-// TestRunFunctionsCoverage tests the run functions for better coverage
-func TestRunFunctionsCoverage(t *testing.T) {
-	t.Parallel()
-
-	// Test that run function handles TTY check correctly
-	// In CI environments, this should return early
-	err := run()
-	if err != nil {
-		t.Errorf("run() returned an error: %v", err)
-	}
-
-	// Test runWithOptions with TTY check
-	err = runWithOptions()
-	if err != nil {
-		t.Errorf("runWithOptions() returned an error: %v", err)
-	}
-}
-
 // TestHandleCopyToClipboardEdgeCases tests clipboard functionality edge cases
 func TestHandleCopyToClipboardEdgeCases(t *testing.T) {
 	t.Parallel()
@@ -2048,26 +2019,6 @@ func TestInitialModelCompleteCoverage(t *testing.T) {
 		if m.inputs[i].Focused() {
 			t.Errorf("Input %d should not be focused", i)
 		}
-	}
-}
-
-// TestRunFunctionsWithTTY tests the run functions when TTY is available
-func TestRunFunctionsWithTTY(t *testing.T) {
-	t.Parallel()
-
-	// This test attempts to cover the TTY-available path in run functions
-	// In environments with TTY, we can't fully test the Bubble Tea program
-	// but we can at least verify the functions don't panic on the TTY check
-
-	// Just calling the functions to ensure they handle TTY detection
-	err := run()
-	if err != nil {
-		t.Errorf("run() returned an error: %v", err)
-	}
-
-	err = runWithOptions()
-	if err != nil {
-		t.Errorf("runWithOptions() returned an error: %v", err)
 	}
 }
 

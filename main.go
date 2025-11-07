@@ -751,24 +751,6 @@ func run() error {
 	return nil
 }
 
-// runWithOptions initializes and runs the Bubble Tea app with custom options
-// This function is useful for testing as it allows running without a TTY
-func runWithOptions(opts ...tea.ProgramOption) error {
-	// Check if we have a TTY available, exit gracefully if not
-	if !isatty.IsTerminal(os.Stdout.Fd()) {
-		return nil
-	}
-
-	m := initialModel()
-
-	app = tea.NewProgram(m, opts...)
-	if _, err := app.Run(); err != nil {
-		return fmt.Errorf("app execution failed: %w", err)
-	}
-
-	return nil
-}
-
 // main is the entry point of the application
 func main() {
 	if err := run(); err != nil {
