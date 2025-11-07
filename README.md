@@ -1,6 +1,6 @@
 # Crontab Expression Editor
 
-🕐 An interactive terminal-based cron expression editor built with Go and Bubble Tea. Create, edit, and validate crontab schedules with real-time human-readable descriptions and next run time calculations.
+An interactive terminal-based cron expression editor built with Go and Bubble Tea. Create, edit, and validate crontab schedules with real-time human-readable descriptions and next run time calculations.
 
 ![Go Version](https://img.shields.io/github/go-mod/go-version/techquestsdev/crontab-guru?logo=go&logoColor=white)
 ![Build Status](https://github.com/techquestsdev/crontab-guru/workflows/CI/badge.svg)
@@ -45,11 +45,11 @@ brew install crontab-guru
 Download the latest release for your platform from the [Releases page](https://github.com/techquestsdev/crontab-guru/releases):
 
 - **Linux** (amd64, arm64)
-- **macOS** (Intel, Apple Silicon)
+- **MacOS** (Intel, Apple Silicon)
 - **Windows** (amd64)
 
 ```bash
-# Example: Download and install on Linux/macOS
+# Example: Download and install on Linux/MacOS
 curl -L https://github.com/techquestsdev/crontab-guru/releases/latest/download/crontab-guru_Linux_x86_64.tar.gz | tar xz
 sudo mv crontab-guru /usr/local/bin/
 ```
@@ -209,7 +209,7 @@ The editor implements sophisticated validation rules:
 
 ## 🧪 Testing
 
-The project has comprehensive test coverage (93.6% with 72 test cases) and zero linting issues.
+The project has comprehensive test coverage and zero linting issues, leveraging Go's testing framework and `golangci-lint` for code quality.
 
 ### Run Tests
 
@@ -308,7 +308,7 @@ make all
 ## 🐛 Known Limitations
 
 - Requires terminal with color support for best experience
-- Clipboard operations require clipboard utilities (xclip on Linux, pbcopy on macOS) and will gracefully fall back with a notification if unavailable
+- Clipboard operations require clipboard utilities (xclip on Linux, pbcopy on MacOS) and will gracefully fall back with a notification if unavailable
 - Advanced cron features (L, W, #) are not fully supported in descriptions
 
 ## 🤝 Contributing

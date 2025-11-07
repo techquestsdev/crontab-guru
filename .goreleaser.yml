@@ -94,7 +94,7 @@ brews:
       token: "{{ .Env.HOMEBREW_TOKEN }}"
     name: crontab-guru
     homepage: https://github.com/techquestsdev/crontab-guru
-    description: "🕐 Interactive terminal-based cron expression editor built with Go and Bubble Tea"
+    description: "Interactive terminal-based cron expression editor built with Go and Bubble Tea"
     license: MIT
     skip_upload: auto
     # Keywords for Homebrew discoverability
