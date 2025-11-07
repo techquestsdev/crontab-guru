@@ -10,20 +10,20 @@ An interactive terminal-based cron expression editor built with Go and Bubble Te
 
 ![demo](docs/demo.gif)
 
-## ✨ Features
+## Features
 
-- 🎨 **Beautiful TUI Interface** - Clean, colorful terminal interface with responsive design
-- ⚡ **Real-time Validation** - Instant feedback as you type with field-aware validation
-- 📝 **Human-Readable Descriptions** - Converts cron expressions to natural language
-- 📋 **Clipboard Integration** - Copy cron expressions to clipboard with one keystroke
-- 🛡️ **Robust Error Handling** - Comprehensive validation prevents crashes and invalid expressions
-- ⌨️ **Intuitive Navigation** - Tab, arrow keys, and shortcuts for efficient editing
-- 🔍 **Field-Specific Validation** - Smart validation for each cron field (minute, hour, day, month, weekday)
-- 📊 **Next Execution Times** - Preview when your cron job will run next
+- **Beautiful TUI Interface** - Clean, colorful terminal interface with responsive design
+- **Real-time Validation** - Instant feedback as you type with field-aware validation
+- **Human-Readable Descriptions** - Converts cron expressions to natural language
+- **Clipboard Integration** - Copy cron expressions to clipboard with one keystroke
+- **Robust Error Handling** - Comprehensive validation prevents crashes and invalid expressions
+- **Intuitive Navigation** - Tab, arrow keys, and shortcuts for efficient editing
+- **Field-Specific Validation** - Smart validation for each cron field (minute, hour, day, month, weekday)
+- **Next Execution Times** - Preview when your cron job will run next
 
-## 🚀 Installation
+## Installation
 
-### 📦 Quick Install (Recommended)
+### Quick Install (Recommended)
 
 #### Using Go Install
 
@@ -54,7 +54,7 @@ curl -L https://github.com/techquestsdev/crontab-guru/releases/latest/download/c
 sudo mv crontab-guru /usr/local/bin/
 ```
 
-### 🛠️ Build from Source
+### Build from Source
 
 #### Prerequisites
 
@@ -110,7 +110,7 @@ make run
 go run main.go
 ```
 
-## 📖 Usage
+## Usage
 
 ### Basic Usage
 
@@ -131,7 +131,7 @@ go run main.go
 | `y`                       | Copy cron expression to clipboard  |
 | `Esc` / `Ctrl+C`          | Quit application                   |
 
-## 🎯 Cron Expression Format
+## Cron Expression Format
 
 The editor uses the standard cron format with 5 fields:
 
@@ -168,7 +168,7 @@ The editor uses the standard cron format with 5 fields:
 | `0 0 1 * *`       | First day of every month |
 | `0 0 * * SUN`     | Every Sunday at midnight |
 
-## 🏗️ Architecture
+## Architecture
 
 The application follows the [**Elm Architecture**](https://guide.elm-lang.org/architecture/) (Model-View-Update pattern) via Bubble Tea:
 
@@ -207,7 +207,7 @@ The editor implements sophisticated validation rules:
 - **Minimum length**: Letter values must be at least 3 characters
 - **Abbreviation validation**: Checks that abbreviations are valid for that field
 
-## 🧪 Testing
+## Testing
 
 The project has comprehensive test coverage and zero linting issues, leveraging Go's testing framework and `golangci-lint` for code quality.
 
@@ -258,17 +258,17 @@ make all
 
 ### Test Categories
 
-- ✅ Input validation (numeric, alphabetic, special characters)
-- ✅ Navigation (tab, arrows, home, end)
-- ✅ Field-specific validation (month/day names)
-- ✅ Error handling (invalid expressions)
-- ✅ Edge cases (empty fields, bounds, single letters)
-- ✅ Clipboard operations
-- ✅ Help toggle
-- ✅ Window resize
-- ✅ Complex cron expressions
+- Input validation (numeric, alphabetic, special characters)
+- Navigation (tab, arrows, home, end)
+- Field-specific validation (month/day names)
+- Error handling (invalid expressions)
+- Edge cases (empty fields, bounds, single letters)
+- Clipboard operations
+- Help toggle
+- Window resize
+- Complex cron expressions
 
-## 📦 Dependencies
+## Dependencies
 
 - [github.com/charmbracelet/bubbletea](https://github.com/charmbracelet/bubbletea) - Terminal UI framework
 - [github.com/charmbracelet/bubbles](https://github.com/charmbracelet/bubbles) - Text input components
@@ -277,7 +277,7 @@ make all
 - [github.com/robfig/cron/v3](https://github.com/robfig/cron/v3) - Cron expression parsing
 - [github.com/atotto/clipboard](https://github.com/atotto/clipboard) - Clipboard integration
 
-## 🔧 Development
+## Development
 
 ### Project Structure
 
@@ -305,13 +305,13 @@ make all
 - Add comments for complex logic
 - Run `go fmt` before committing
 
-## 🐛 Known Limitations
+## Known Limitations
 
 - Requires terminal with color support for best experience
 - Clipboard operations require clipboard utilities (xclip on Linux, pbcopy on MacOS) and will gracefully fall back with a notification if unavailable
 - Advanced cron features (L, W, #) are not fully supported in descriptions
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -329,18 +329,18 @@ Contributions are welcome! Please follow these steps:
 - Add tests for new features
 - Update documentation as needed
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [crontab.guru](https://crontab.guru/) for the project inspiration
 - [Charm](https://charm.sh/) for the amazing Bubble Tea framework
 - [robfig](https://github.com/robfig) for the robust cron parser
 - [lnquy](https://github.com/lnquy) for the cron description library
 
-## 📧 Contact
+## Contact
 
 André Nogueira - [@aanogueira](https://github.com/aanogueira)
 
