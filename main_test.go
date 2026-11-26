@@ -1808,7 +1808,9 @@ func TestHandleBackspaceNavigationEdgeCases(t *testing.T) {
 	if cmd != nil {
 		t.Error("Expected no command from handleBackspaceNavigation on non-empty input")
 	}
-} // TestValidateLetterValueEdgeCases tests edge cases in letter validation
+}
+
+// TestValidateLetterValueEdgeCases tests edge cases in letter validation
 func TestValidateLetterValueEdgeCases(t *testing.T) {
 	t.Parallel()
 

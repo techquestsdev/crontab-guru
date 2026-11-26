@@ -3,7 +3,7 @@
 // expression-editor, bubbletea, charm, developer-tools, validation
 module github.com/techquestsdev/crontab-guru
 
-go 1.25.3
+go 1.26.0
 
 require (
 	github.com/atotto/clipboard v0.1.4
@@ -41,6 +41,6 @@ require (
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
-	golang.org/x/sys v0.43.0 // indirect
-	golang.org/x/text v0.36.0 // indirect
+	golang.org/x/sys v0.50.0 // indirect
+	golang.org/x/text v0.44.0 // indirect
 )

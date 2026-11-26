@@ -14,7 +14,9 @@ linters:
   default: all
   disable:
     - wsl # Deprecated; using wsl_v5 instead
-    - exhaustruct
+    - gomodguard # Deprecated; using gomodguard_v2 instead
+    - exhaustruct # Deprecated; replaced by exhaustruct_v5
+    - exhaustruct_v5
     - ireturn
     - tagliatelle
     - noinlineerr

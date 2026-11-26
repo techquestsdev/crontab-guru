@@ -2,36 +2,18 @@ name: Release
 
 on:
   push:
-    tags:
-      - "v*"
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   release:
-    name: Create Release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-
-      - name: Set up Go
-        uses: actions/setup-go@v7
-        with:
-          go-version: "1.25"
-
-      - name: Run tests
-        run: go test -v -race ./...
-
-      - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v7
-        with:
-          distribution: goreleaser
-          version: latest
-          args: release --clean
-        env:
-          HOMEBREW_TOKEN: ${{ secrets.HOMEBREW_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    uses: techquestsdev/.github/.github/workflows/go-release.yml@main
+    secrets:
+      HOMEBREW_TOKEN: ${{ secrets.HOMEBREW_TOKEN }}
