@@ -1,13 +1,10 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
 # GoReleaser configuration for Crontab Guru
-# A terminal-based cron expression editor with real-time validation
-# Keywords: cron, crontab, terminal, TUI, CLI, scheduler, bubbletea, Go
-# Documentation: https://goreleaser.com
 
 project_name: crontab-guru
 
 version: 2
 
-# Metadata for the project
 metadata:
   mod_timestamp: "{{ .CommitTimestamp }}"
 
@@ -44,7 +41,8 @@ builds:
 
 archives:
   - id: default
-    format: tar.gz
+    formats:
+      - tar.gz
     name_template: >-
       {{ .ProjectName }}_
       {{- .Version }}_
@@ -55,7 +53,8 @@ archives:
       {{- if .Arm }}v{{ .Arm }}{{ end }}
     format_overrides:
       - goos: windows
-        format: zip
+        formats:
+          - zip
     files:
       - README.md
       - LICENSE
@@ -64,7 +63,7 @@ checksum:
   name_template: "checksums.txt"
 
 snapshot:
-  name_template: "{{ incpatch .Version }}-next"
+  version_template: "{{ incpatch .Version }}-next"
 
 changelog:
   sort: asc
@@ -87,20 +86,32 @@ changelog:
     - title: Others
       order: 999
 
-brews:
-  - repository:
-      owner: techquestsdev
-      name: homebrew-tap
-      token: "{{ .Env.HOMEBREW_TOKEN }}"
-    name: crontab-guru
+homebrew_casks:
+  - name: crontab-guru
+    directory: Casks
     homepage: https://github.com/techquestsdev/crontab-guru
     description: "Interactive terminal-based cron expression editor built with Go and Bubble Tea"
     license: MIT
+    binaries:
+      - crontab-guru
     skip_upload: auto
-    # Keywords for Homebrew discoverability
+    repository:
+      owner: techquestsdev
+      name: homebrew-tap
+      branch: main
+      token: "{{ .Env.HOMEBREW_TOKEN }}"
+    commit_author:
+      name: github-actions[bot]
+      email: github-actions[bot]@users.noreply.github.com
+    commit_msg_template: "Brew cask update for {{ .ProjectName }} version {{ .Tag }}"
     caveats: |
       Crontab Guru is an interactive terminal application for creating and editing cron expressions.
-      Keywords: cron, crontab, scheduler, terminal, TUI, CLI, bubbletea, interactive, developer-tools
+    hooks:
+      post:
+        install_steps: |
+          on_macos do
+            run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{ .StagedPath }}/crontab-guru"]
+          end
 
 release:
   github:
